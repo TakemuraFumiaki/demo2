@@ -6,18 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <table border="1">
-        <tr>
-            <th>名前</th><th>色</th><th>価格</th><th>全て</th>
-        </tr>
-
-        <tr th:each="item,aiueo:${itemlist}">
-            <td th:text="${item.name}">dummy</td>
-            <td th:text="${item.color}">dummy</td>
-            <td th:text="${item.price}">dummy</td>
-            <td th:text="${item.toString}">dummy</td>
-        </tr>
-    </table>
-    
+    <span th:if="${car.speed <= 60}" th:text="法廷速度です"></span>
+    <span th:unless="${car.speed <= 60}" th:text="スピード違反です"></span>
 </body>
 </html>

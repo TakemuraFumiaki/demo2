@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>掲示板</h1>
+    <hr>
+    <form th:action="@{/first/second}" method="post">
+        お名前: <input type="text" name="name"><br>
+        コメント: <textarea name="text"></textarea><br>
+        <input type="submit" value="送信"><hr>
+    </form>
+
+    <h2>投稿一覧</h2>
+    <div th:each="a : ${userList}">
+        名前：<span th:text="${a.name}"></span><br> 
+        コメント：<span th:text="${a.text}"></span><br>
+        <hr>
+    </div>
+</body>
+</html>
