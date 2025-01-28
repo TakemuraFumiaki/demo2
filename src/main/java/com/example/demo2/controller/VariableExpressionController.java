@@ -12,9 +12,8 @@ public class VariableExpressionController {
 
     @RequestMapping("")
     public String index(Model model){
-
-        String javascriptStr = "<script>alert('xssの脆弱性あり');</script>";
-        model.addAttribute("name", javascriptStr);
+        
+        model.addAttribute("name", "tobita");
         
         Car car = new Car(100,"bentsu",50);
         model.addAttribute("car", car);

@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.demo2.domein.User;
+import com.example.demo2.domein.User2;
 
 import jakarta.servlet.ServletContext;
 
@@ -21,28 +21,25 @@ public class Ex16Controller {
     private ServletContext servletContext;
 
     @RequestMapping("")
-    public String index(Model model) {
-        List<User> userList = (List<User>) servletContext.getAttribute("userList");
+    public String index() {
+        @SuppressWarnings("unchecked")
+        List<User2> userList = (List<User2>) servletContext.getAttribute("userList");
 
         if (userList == null) {
             userList = new ArrayList<>();
             servletContext.setAttribute("userList", userList);
         }
 
-        model.addAttribute("userList", userList); // ビューに渡す
         return "ex-16";
     }
 
     @RequestMapping("/second")
-    public String index(String name, String text) {
-        List<User> userList = (List<User>) servletContext.getAttribute("userList");
+    public String second(String name, String text) {
+        @SuppressWarnings("unchecked")
+        List<User2> userList = (List<User2>) servletContext.getAttribute("userList");
 
-        if (userList == null) {
-            userList = new ArrayList<>();
-            servletContext.setAttribute("userList", userList);
-        }
-
-        userList.add(new User(name, text));
-        return "redirect:/first"; // POST後にリダイレクト
+        userList.add(0,new User2(name, text));
+        servletContext.setAttribute("userList", userList);
+        return "ex-16"; // POST後にリダイレクト
     }
 }
